@@ -17,18 +17,15 @@ public class CardLayoutDemo implements ItemListener
     public void addComponentToPane(Container pane) 
     {
         //Put the JComboBox in a JPanel to get a nicer look.
-        JPanel comboBoxPane = new JPanel(); //use FlowLayout
+        JPanel basePanel = new JPanel();
         String comboBoxItems[] = { BUTTONPANEL, TEXTPANEL };
         JComboBox cb = new JComboBox(comboBoxItems);
         JButton firstButton = new JButton("first");
         JButton secondButton = new JButton("second");
         firstButton.addItemListener(this);
         secondButton.addItemListener(this);
-        cb.setEditable(false);
-        cb.addItemListener(this);
-        comboBoxPane.add(cb);
-        comboBoxPane.add(firstButton);
-        comboBoxPane.add(secondButton);
+        basePanel.add(firstButton);
+        basePanel.add(secondButton);
          
         //Create the "cards".
         JPanel card1 = new JPanel();
@@ -44,7 +41,6 @@ public class CardLayoutDemo implements ItemListener
         cards.add(card1, BUTTONPANEL);
         cards.add(card2, TEXTPANEL);
          
-        pane.add(comboBoxPane, BorderLayout.PAGE_START);
         pane.add(cards, BorderLayout.CENTER);
         
         firstButton.addActionListener(new ActionListener()
